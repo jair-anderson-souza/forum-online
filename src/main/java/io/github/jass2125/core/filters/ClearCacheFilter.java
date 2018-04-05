@@ -12,13 +12,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
  * @since Mar 19, 2018 9:51:26 PM
  */
-//@WebFilter(filterName = "", urlPatterns = {"", ""})
+@WebFilter(filterName = "cacheFilter", urlPatterns = {"/user/*"})
 public class ClearCacheFilter implements Filter {
 
     @Override

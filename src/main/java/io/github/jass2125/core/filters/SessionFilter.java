@@ -13,12 +13,13 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
  * @since Mar 19, 2018 9:49:26 PM 
  */
-//@WebFilter(filterName = "", urlPatterns = {"", ""})
+@WebFilter(filterName = "sessionFilter", urlPatterns = {"/user/*", ""})
 public class SessionFilter implements Filter{
 
     @Override
