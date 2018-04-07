@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
  * @since Mar 19, 2018 9:51:26 PM
  */
-//@WebFilter(filterName = "cacheFilter", urlPatterns = "/user/*")
+@WebFilter(filterName = "cacheFilter", urlPatterns = "/user/*")
 public class ClearCacheFilter implements Filter {
 
     @Override
