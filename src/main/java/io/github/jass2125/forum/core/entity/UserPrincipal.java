@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Anderson Souza
@@ -24,8 +26,14 @@ public class UserPrincipal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     private Long id;
+    @NotNull
+    @Size(min = 1)
     private String name;
+    @NotNull
+    @Size(min = 1)
     private String email;
+    @NotNull
+    @Size(min = 1)
     private String password;
 
     public UserPrincipal() {
