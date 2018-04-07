@@ -12,16 +12,8 @@
         <link href="css/stylesheet.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <div class="container-fluid">
+        <div class="container">
             <div class="jumbotron">
-
-                <!--            Aqui vai ficar a LOGO do site
-                <div class="row">
-                                    <div class="col-md-12 col-xl-12 col-sm-12">
-                                        <img src="" class="img-responsive" alt=""/>
-                                    </div>
-                                </div>-->
-
                 <h3 class="primary-text text-center">Forum Online</h3>
                 <h:form>
                     <h:messages/>
@@ -39,7 +31,13 @@
                                 <h:outputLabel value="Password"/>
                                 <h:inputSecret styleClass="form-control" value="#{userController.user.password}" />
                             </div>
-                            <h:commandButton value="Go" styleClass="btn btn-success" action="#{userController.login()}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xl-6 col-md-6">
+                            <h:commandButton value="Login" styleClass="btn btn-success" action="#{userController.login()}"/>
+                        </div>
+                        <div class="col-sm-2 col-xl-2 col-md-2 offset-sm-4 offset-xl-4 offset-md-4">
                             <h:link outcome="register" value="Register"/>
                         </div>
                     </div>
