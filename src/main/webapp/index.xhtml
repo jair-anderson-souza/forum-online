@@ -7,7 +7,13 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:messages/>
+            <h:outputLabel value="Email"/>
+            <h:inputText value="#{userController.user.email}" />
+            <h:outputLabel value="Password"/>
+            <h:inputSecret value="#{userController.user.password}" />
             <h:commandButton value="Go" action="#{userController.login()}"/>
+            <h:link outcome="register" value="Register"/>
         </h:form>
     </h:body>
 </html>
