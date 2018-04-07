@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.forum.core.dao.imp;
 
-import io.github.jass2125.forum.core.exceptions.UserNotFound;
+import io.github.jass2125.forum.core.exceptions.UserNotFoundExcetion;
 import io.github.jass2125.forum.core.dao.client.UserPrincipalDao;
 import io.github.jass2125.forum.core.entity.UserPrincipal;
 import javax.ejb.Stateless;
@@ -31,7 +31,7 @@ public class UserPrincipalDaoImp implements UserPrincipalDao {
                     setParameter("password", user.getPassword()).
                     getSingleResult();
         } catch (NoResultException e) {
-            throw new UserNotFound("Dados inválidos", e);
+            throw new UserNotFoundExcetion("Dados inválidos", e);
         }
     }
 }

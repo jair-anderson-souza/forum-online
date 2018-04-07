@@ -7,7 +7,7 @@ import io.github.jass2125.forum.core.dao.client.UserPrincipalDao;
 import io.github.jass2125.forum.core.entity.UserPrincipal;
 import io.github.jass2125.forum.core.exceptions.CryptographyException;
 import io.github.jass2125.forum.core.exceptions.EncodingException;
-import io.github.jass2125.forum.core.exceptions.UserNotFound;
+import io.github.jass2125.forum.core.exceptions.UserNotFoundExcetion;
 import io.github.jass2125.forum.core.services.client.UserService;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -35,7 +35,7 @@ public class UserServiceImp implements UserService {
     public UserPrincipal findUser(UserPrincipal user) {
         try {
             return userPrincipalDao.searchByEmailAndPassword(user);
-        } catch (UserNotFound e) {
+        } catch (UserNotFoundExcetion e) {
             throw e;
         }
     }
