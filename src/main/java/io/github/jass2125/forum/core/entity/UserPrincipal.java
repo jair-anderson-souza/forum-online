@@ -4,6 +4,7 @@
 package io.github.jass2125.forum.core.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class UserPrincipal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     private Long id;
+    private String name;
     private String email;
     private String password;
 
@@ -34,8 +36,24 @@ public class UserPrincipal implements Serializable {
         this.password = password;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -43,7 +61,7 @@ public class UserPrincipal implements Serializable {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
@@ -52,10 +70,9 @@ public class UserPrincipal implements Serializable {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((this.email == null) ? 0 : this.email.hashCode());
-        return result;
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override
@@ -69,20 +86,13 @@ public class UserPrincipal implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        UserPrincipal other = (UserPrincipal) obj;
-        if (this.email == null) {
-            if (other.email != null) {
-                return false;
-            }
-        } else if (!this.email.equals(other.email)) {
-            return false;
-        }
-        return true;
+        final UserPrincipal other = (UserPrincipal) obj;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + '}';
+        return "UserPrincipal{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + '}';
     }
 
 }
