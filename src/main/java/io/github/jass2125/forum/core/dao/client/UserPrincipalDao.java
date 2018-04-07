@@ -14,4 +14,6 @@ import io.github.jass2125.forum.core.entity.UserPrincipal;
 public interface UserPrincipalDao {
 
     public UserPrincipal searchByEmailAndPassword(UserPrincipal user);
+
+    public UserPrincipal persist(UserPrincipal newUser);
 }

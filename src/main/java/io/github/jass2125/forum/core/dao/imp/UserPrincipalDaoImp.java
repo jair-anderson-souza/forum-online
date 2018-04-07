@@ -5,6 +5,7 @@
  */
 package io.github.jass2125.forum.core.dao.imp;
 
+import io.github.jass2125.forum.core.exceptions.UserPersistexception;
 import io.github.jass2125.forum.core.exceptions.UserNotFoundExcetion;
 import io.github.jass2125.forum.core.dao.client.UserPrincipalDao;
 import io.github.jass2125.forum.core.entity.UserPrincipal;
@@ -32,6 +33,17 @@ public class UserPrincipalDaoImp implements UserPrincipalDao {
                     getSingleResult();
         } catch (NoResultException e) {
             throw new UserNotFoundExcetion("Dados inválidos", e);
+        }
+    }
+
+    @Override
+    public UserPrincipal persist(UserPrincipal newUser) {
+        try {
+            em.persist(newUser);
+            System.out.println(newUser);
+            return newUser;
+        } catch (Exception e) {
+            throw new UserPersistexception("Não foi possível realizar o cadastro!!!", e);
         }
     }
 }
