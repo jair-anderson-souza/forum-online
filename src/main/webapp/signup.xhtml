@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <h:outputLabel value="Name"/>
-                                <h:inputText styleClass="form-control" value="#{userController.user.email}" />
+                                <h:inputText styleClass="form-control" value="#{userController.newUser.name}" />
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <h:outputLabel value="Email"/>
-                                <h:inputText styleClass="form-control" value="#{userController.user.email}" />
+                                <h:inputText styleClass="form-control" value="#{userController.newUser.email}" />
                             </div>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                         <div class="col-md-12 col-xl-12 col-sm-12">
                             <div class="form-group">
                                 <h:outputLabel value="Password"/>
-                                <h:inputSecret styleClass="form-control" value="#{userController.user.password}" />
+                                <h:inputSecret styleClass="form-control" value="#{userController.newUser.password}" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-xl-6 col-md-6">
-                            <h:commandButton value="Login" styleClass="btn btn-success" action="#{userController.login()}"/>
+                            <h:commandButton value="Create account" styleClass="btn btn-success" action="#{userController.createAccount()}"/>
                         </div>
                         <div class="col-sm-2 col-xl-2 col-md-2 offset-sm-4 offset-xl-4 offset-md-4">
                             <h:link outcome="signin" value="Sign in"/>
