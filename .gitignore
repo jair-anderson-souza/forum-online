@@ -1,9 +1,6 @@
 # Compiled class file
 *.class
-<<<<<<< HEAD
 /target
-=======
->>>>>>> b95b7c6f57abc3f2212473a5a2dbf2c5da8371d9
 
 # Log file
 *.log
@@ -24,12 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-<<<<<<< HEAD
 
 # Files from IDE
 .classpath
 .project
 .settings
 nb-configuration.xml
-=======
->>>>>>> b95b7c6f57abc3f2212473a5a2dbf2c5da8371d9
+/nbproject/
+/src/main/webapp/WEB-INF/glassfish-resources.xml
+/src/main/webapp/META-INF/context.xml
