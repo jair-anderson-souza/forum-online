@@ -6,13 +6,13 @@
 package io.github.jass2125.forum.core.controllers;
 
 import io.github.jass2125.forum.core.entity.UserPrincipal;
+import io.github.jass2125.forum.core.messages.FaceMessage;
 import io.github.jass2125.forum.core.services.client.UserService;
+import io.github.jass2125.forum.core.session.FacesSession;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,6 +28,12 @@ public class UserController implements Serializable {
     private UserService userService;
     @Inject
     private UserPrincipal user;
+    @Inject
+    private UserPrincipal newUser;
+    @Inject
+    private FacesSession session;
+    @Inject
+    private FaceMessage faceMessage;
 
     @PostConstruct
     public void init() {
@@ -41,28 +47,52 @@ public class UserController implements Serializable {
         this.user = user;
     }
 
+    public UserPrincipal getNewUser() {
+        return newUser;
+    }
+
+    public void setNewUser(UserPrincipal newUser) {
+        this.newUser = newUser;
+    }
+
     public String login() {
         UserPrincipal user = retriveUser();
         if (user != null) {
+            this.faceMessage.addMessage("Seja Bem Vindo " + user.getName());
             addToSession(user);
             return "/user/home.xhtml?faces-redirect=true";
         }
-        FacesMessage message = new FacesMessage("Dados inválidos, tente novamente!!");
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        return "index.xhtml";
+        this.faceMessage.addMessage("Dados inválidos, tente novamente!!");
+        return "signin.xhtml?faces-redirect=true";
     }
 
     public UserPrincipal retriveUser() {
         try {
             return userService.login(user);
         } catch (RuntimeException e) {
-            
             return null;
         }
     }
 
     public void addToSession(UserPrincipal user) {
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
+        this.session.addUserToSession(user);
     }
 
+    public String createAccount() {
+        UserPrincipal user = persist();
+        if (user != null) {
+            this.faceMessage.addMessage("Seja Bem Vindo!!");
+            return "/user/home.xhtml?faces-redirect=true";
+        }
+        this.faceMessage.addMessage("erro no cadastro, tente novamente");
+        return "index.xhtml";
+    }
+
+    public UserPrincipal persist() {
+        try {
+            return userService.save(newUser);
+        } catch (RuntimeException e) {
+            return null;
+        }
+    }
 }
