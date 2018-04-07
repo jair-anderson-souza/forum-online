@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 public class EncodingException extends RuntimeException {
 
     public EncodingException(UnsupportedEncodingException e, String msg) {
+        super(msg, e);
     }
 
 }

@@ -20,6 +20,7 @@ public class CryptographyException extends RuntimeException {
     }
 
     public CryptographyException(NoSuchAlgorithmException e, String msg) {
+        super(msg, e);
     }
 
 }
