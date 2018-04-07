@@ -27,23 +27,33 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserPrincipal login(UserPrincipal user) {
-        String encryptPassword = encryptPassword(user.getPassword());
-        user.setPassword(encryptPassword);
         return findUser(user);
     }
 
     public UserPrincipal findUser(UserPrincipal user) {
         try {
+            encryptPassword(user);
             return userPrincipalDao.searchByEmailAndPassword(user);
         } catch (UserNotFoundExcetion e) {
             throw e;
         }
     }
 
-    public String encryptPassword(String password) {
+    public void encryptPassword(UserPrincipal user) {
         try {
-            return cryptography.encryptPassword(password);
+            String encryptPassword = cryptography.encryptPassword(user.getPassword());
+            user.setPassword(encryptPassword);
         } catch (CryptographyException | EncodingException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public UserPrincipal save(UserPrincipal newUser) {
+        try {
+            encryptPassword(newUser);
+            return userPrincipalDao.persist(newUser);
+        } catch (RuntimeException e) {
             throw e;
         }
     }
