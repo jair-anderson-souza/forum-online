@@ -5,11 +5,13 @@
  */
 package io.github.jass2125.forum.core.dao.imp;
 
-import io.github.jass2125.forum.core.entity.Topic;
+import com.mongodb.client.MongoCollection;
 import io.github.jass2125.forum.core.exceptions.Persistexception;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import io.github.jass2125.forum.core.dao.client.TopicDao;
+import javax.inject.Inject;
+import org.bson.Document;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
@@ -18,19 +20,20 @@ import io.github.jass2125.forum.core.dao.client.TopicDao;
 @Stateless
 public class TopicDaoImp implements TopicDao {
 
+    @Inject
+    private MongoCollection<Document> colletion;
+
     @PostConstruct
     public void init() {
-
     }
 
     @Override
-    public Topic persist(Topic topic) {
+    public void persist(Document document) {
         try {
-
-            return topic;
+            colletion.insertOne(document);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Persistexception("Não foi possível realizar o cadastro!!!", e);
         }
     }
-
 }

@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.forum.core.dao.client;
 
-import io.github.jass2125.forum.core.entity.Topic;
+import org.bson.Document;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
@@ -13,6 +13,6 @@ import io.github.jass2125.forum.core.entity.Topic;
  */
 public interface TopicDao {
 
-    public Topic persist(Topic topic);
+    public void persist(Document document);
 
 }
