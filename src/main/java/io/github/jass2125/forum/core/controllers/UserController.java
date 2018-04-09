@@ -8,7 +8,7 @@ package io.github.jass2125.forum.core.controllers;
 import io.github.jass2125.forum.core.entity.UserPrincipal;
 import io.github.jass2125.forum.core.messages.FaceMessage;
 import io.github.jass2125.forum.core.services.client.UserService;
-import io.github.jass2125.forum.core.session.FacesSession;
+import io.github.jass2125.forum.core.session.Session;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -31,7 +31,7 @@ public class UserController implements Serializable {
     @Inject
     private UserPrincipal newUser;
     @Inject
-    private FacesSession session;
+    private Session session;
     @Inject
     private FaceMessage faceMessage;
 
