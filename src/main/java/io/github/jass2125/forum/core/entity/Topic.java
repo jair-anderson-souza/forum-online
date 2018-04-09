@@ -6,8 +6,9 @@
 package io.github.jass2125.forum.core.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
+import org.bson.Document;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
@@ -19,9 +20,16 @@ public class Topic implements Serializable {
     private String category;
     private String title;
     private String content;
-    private LocalDate date;
+    private Date date;
 
     public Topic() {
+    }
+
+    public Topic(String category, String title, String content, Date date) {
+        this.category = category;
+        this.title = title;
+        this.content = content;
+        this.date = date;
     }
 
     public Long getId() {
@@ -56,12 +64,29 @@ public class Topic implements Serializable {
         this.content = content;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Document toDocument() {
+        Document doc = new Document().
+                append("category", this.getCategory()).
+                append("title", this.getTitle()).
+                append("content", this.getContent()).
+                append("date", this.getDate());
+        return doc;
+    }
+
+    public Topic toTopic(Document doc) {
+        String category = doc.getString("category");
+        String title = doc.getString("title");
+        String content = doc.getString("content");
+        Date date = (Date) doc.get("date");
+        return new Topic(category, title, content, date);
     }
 
     @Override
