@@ -19,7 +19,7 @@ public class Topic implements Serializable {
     private String category;
     private String title;
     private String content;
-    private LocalDate data;
+    private LocalDate date;
 
     public Topic() {
     }
@@ -56,12 +56,12 @@ public class Topic implements Serializable {
         this.content = content;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Topic implements Serializable {
 
     @Override
     public String toString() {
-        return "Topic{" + "id=" + id + ", category=" + category + ", title=" + title + ", content=" + content + ", data=" + data + '}';
+        return "Topic{" + "id=" + id + ", category=" + category + ", title=" + title + ", content=" + content + ", data=" + date + '}';
     }
 
 }

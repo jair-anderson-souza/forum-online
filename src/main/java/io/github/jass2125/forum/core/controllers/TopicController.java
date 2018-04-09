@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import io.github.jass2125.forum.core.services.client.TopicService;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,14 +21,23 @@ import io.github.jass2125.forum.core.services.client.TopicService;
 @Named
 @RequestScoped
 public class TopicController implements Serializable {
-
+    
     @Inject
     private Topic topic;
     @EJB
     private TopicService topicService;
-
-    public void persist() {
-
+    
+    public Topic getTopic() {
+        return topic;
     }
-
+    
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+    
+    public void persist() {
+        topic.setDate(LocalDate.now());
+        System.out.println(topic);
+    }
+    
 }

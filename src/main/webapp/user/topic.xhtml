@@ -18,31 +18,38 @@ and open the template in the editor.
     <h:body>
         <div class="container">
             <div class="jumbotron">
-                <h3 class="primary-text text-center">Forum Online</h3>
+                <h3 class="primary-text text-center">Forum Online - Tópico</h3>
                 <h:form>
                     <h:messages/>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <h:outputLabel value="Email"/>
-                                <h:inputText styleClass="form-control" value="#{userController.user.email}" />
+                                <h:outputLabel value="Categoria"/>
+                                <h:inputText styleClass="form-control" value="#{topicController.topic.category}" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-xl-12 col-sm-12">
                             <div class="form-group">
-                                <h:outputLabel value="Password"/>
-                                <h:inputSecret styleClass="form-control" value="#{userController.user.password}" />
+                                <h:outputLabel value="Título"/>
+                                <h:inputText styleClass="form-control" value="#{topicController.topic.title}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12 col-sm-12">
+                            <div class="form-group">
+                                <h:outputLabel value="Conteúdo"/>
+                                <h:inputTextarea styleClass="form-control" rows="4" cols="4" value="#{topicController.topic.content}" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-xl-6 col-md-6">
-                            <h:commandButton value="Login" styleClass="btn btn-success" action="#{userController.login()}"/>
+                            <h:commandButton value="Login" styleClass="btn btn-success" action="#{topicController.persist()}"/>
                         </div>
                         <div class="col-sm-2 col-xl-2 col-md-2 offset-sm-4 offset-xl-4 offset-md-4">
-                            <!--<h:link outcome="signup" value="Sign up"/>-->
                         </div>
                     </div>
                 </h:form>
