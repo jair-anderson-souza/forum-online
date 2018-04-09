@@ -5,17 +5,16 @@
  */
 package io.github.jass2125.forum.core.produces;
 
-import java.util.Map;
+import java.io.Serializable;
 import javax.enterprise.inject.Produces;
-import javax.faces.context.FacesContext;
+import redis.clients.jedis.Jedis;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
- * @since Apr 7, 2018 5:25:39 PM
+ * @since Apr 9, 2018 12:51:35 AM
  */
-public class FacesMessageProducer {
+public class RedisProducer implements Serializable {
 
     @Produces
-    private Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-
+    private Jedis redis = new Jedis("localhost", 6379);
 }
