@@ -9,9 +9,9 @@ package io.github.jass2125.forum.core.exceptions;
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
  * @since Apr 7, 2018 4:39:28 PM
  */
-public class UserPersistexception extends RuntimeException {
+public class Persistexception extends RuntimeException {
 
-    public UserPersistexception(String msg, Exception e) {
+    public Persistexception(String msg, Exception e) {
         super(msg, e);
     }
 
