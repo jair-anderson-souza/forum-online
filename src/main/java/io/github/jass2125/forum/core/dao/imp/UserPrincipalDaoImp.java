@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.forum.core.dao.imp;
 
-import io.github.jass2125.forum.core.exceptions.UserPersistexception;
+import io.github.jass2125.forum.core.exceptions.Persistexception;
 import io.github.jass2125.forum.core.exceptions.UserNotFoundExcetion;
 import io.github.jass2125.forum.core.dao.client.UserPrincipalDao;
 import io.github.jass2125.forum.core.entity.UserPrincipal;
@@ -43,7 +43,7 @@ public class UserPrincipalDaoImp implements UserPrincipalDao {
             System.out.println(newUser);
             return newUser;
         } catch (Exception e) {
-            throw new UserPersistexception("Não foi possível realizar o cadastro!!!", e);
+            throw new Persistexception("Não foi possível realizar o cadastro!!!", e);
         }
     }
 }
