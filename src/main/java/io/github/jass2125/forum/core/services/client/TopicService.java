@@ -13,5 +13,5 @@ import io.github.jass2125.forum.core.entity.Topic;
  */
 public interface TopicService {
 
-    public Topic save(Topic topic);
+    public void save(Topic topic);
 }

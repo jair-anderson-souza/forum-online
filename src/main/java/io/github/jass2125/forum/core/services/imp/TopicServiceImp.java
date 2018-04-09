@@ -9,6 +9,7 @@ import io.github.jass2125.forum.core.entity.Topic;
 import javax.ejb.Stateless;
 import io.github.jass2125.forum.core.services.client.TopicService;
 import io.github.jass2125.forum.core.dao.client.TopicDao;
+import javax.ejb.EJB;
 
 /**
  * @author Anderson Souza <jair_anderson_bs@hotmail.com>
@@ -16,13 +17,13 @@ import io.github.jass2125.forum.core.dao.client.TopicDao;
  */
 @Stateless
 public class TopicServiceImp implements TopicService {
-
+    @EJB
     private TopicDao topicDao;
 
     @Override
-    public Topic save(Topic topic) {
+    public void save(Topic topic) {
         try {
-            return topicDao.persist(topic);
+            topicDao.persist(topic.toDocument());
         } catch (RuntimeException e) {
             throw e;
         }
